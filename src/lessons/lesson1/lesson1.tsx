@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrencyExchangeContainer from '../../containers/CurrencyExchangeContainer/CurrencyEContainer'
+import {ACTIONS_TYPE} from "../../redux/actions";
 
 // Redux
 // https://tproger.ru/translations/redux-for-beginners/
