@@ -78,20 +78,17 @@ function makeCounter(b: number) {
 // 3) superSum(3)(2)(5,3) //10
 // 4) superSum(3)(2,5,3) //10
 // 5) superSum(3)(2,5)(3) //10
-// 6) superSum(3)(2,5)(3,9) //10
-function curry(fn: (...arg:number[]) => number, ...args:number[]) {
+// 6) superSum(3)(2,5)(3,9) //19
+function superSum(...args:number[]) {
     return (..._arg:number[]) => {
-        return fn(...args, ..._arg);
+        return args.reduce((acc,el)=>acc+el);
     }
 }
 
-function volume(l: number, h: number, w: number) {
-    return l + h + w
-}
 
-const hCy = curry(volume, 100);
-// hCy(200, 900);
-// hCy(70, 60);
+// @ts-ignore
+console.log(superSum(3)(2,5)(3,9))
+
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
 // Task 05
