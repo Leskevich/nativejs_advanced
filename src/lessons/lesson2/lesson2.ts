@@ -79,15 +79,20 @@ function makeCounter(b: number) {
 // 4) superSum(3)(2,5,3) //10
 // 5) superSum(3)(2,5)(3) //10
 // 6) superSum(3)(2,5)(3,9) //19
-function superSum(...args:number[]) {
-    return (..._arg:number[]) => {
-        return args.reduce((acc,el)=>acc+el);
+function superSum(n: number) {
+    if (!n) return 0
+    let nums: number[] = []
+
+    return function sum(...args: number[]) {
+        nums = nums.concat(args)
+        if (nums.length < n) return sum
+        nums.length = n
+        return nums.reduce((a, b) => a + b)
     }
 }
 
 
 // @ts-ignore
-console.log(superSum(3)(2,5)(3,9))
 
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
